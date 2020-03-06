@@ -1,24 +1,22 @@
-
 $(document).ready(function () {
 
-    const mymap = L.map('mainMap').setView([44.475883, -73.212074], 14)
+    const mymap = L.map('restMap').setView([44.475883, -73.212074], 14)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>contributors'
     }).addTo(mymap)
 
-    /////////////////////////////////////Restaurant info
+    /////////////////////////////////////////Restaurant info
     fetch('https://json-server.burlingtoncodeacademy.now.sh/restaurants').then((data) => {
         return data.json()
     }).then(jsonObj => {
-        //here's where you do things with the data
+        // here's where you do things with the data
         jsonObj.forEach(e => {
             return placeMarker(e)
         })
     })
-
     function placeMarker(obj) {
-        fetch(`https://nominatim.openstreetmap.org/search/?q=${obj.address}&format=json`)
+        fetch(`https://nominatim.openstreetmap.org/search/?q=${obj.address}& format=json`)
             .then((data) => {
                 return data.json()
             })
@@ -27,19 +25,14 @@ $(document).ready(function () {
                 let lat = info.lat
                 let lon = info.lon
                 let marker = L.marker([lat, lon]).addTo(mymap)
-                marker.bindPopup(`${obj.name}<br>${obj.address}`)
-                renderDisplay(marker, obj)
+                marker.bindPopup(`${obj.name} <br>${obj.address}`).openPopup()
+                marker.on('click', function () {
+                    $("#display").empty()
+                    $("#display").append(`<divclass="restaurat-info">${obj.id}</div>`)
+                })
             })
     }
 
-    function renderDisplay(element, object) {
-        element.on('click', function () {
-            $("#display").empty()
-            $("#display").append(`<div id="restaurant-name">${object.name}</div>`)
-            $("#display").append(`<div>${object.address}</div>`)
-            $("#display").append(`<a href="/restaurant/${object.id}" id="bottom-of-display"><div>Learn More</div></a>`)
-        })
-    }
 
     let objJ = [
         {
@@ -235,6 +228,22 @@ $(document).ready(function () {
             ]
         }
     ]
-})
+    let restaurant = window.location.href.split('/').pop()
 
+    fetch(`https://json-server.burlingtoncodeacademy.now.sh/restaurants/`).then((data) => {
+        return data.json()
+    }).then(jsonObj => {
+        let foundRestObj = jsonObj.filter(e => e.id === restaurant)[0]
+        renderDisplay(foundRestObj)
+    })
+    function renderDisplay(object) {
+        $("#top").html(`${object.name}`)
+        $("#restDisplay").append(`<div>${object.address}</div>`)
+        $("#restDisplay").append(`<div>${object.phone}</div>`)
+        $("#restDisplay").append(`<div>${object.hours}</div>`)
+        $("#restDisplay").append(`<div>${object.notes}</div>`)
+    }
+
+
+})
 
