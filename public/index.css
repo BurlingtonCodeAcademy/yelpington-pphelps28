@@ -1,0 +1,75 @@
+body {
+    font-family: 'Playfair Display', serif;
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font-family: 'Libre Baskerville', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0;
+    color: #063246;
+    background-color: #1CA6C8;
+}
+
+#top {
+    height: 5vh;
+    text-align: center;
+    padding: 3px;
+    font-size: 1.4em;
+    color: #9BDDD4;
+    border-bottom: 5px solid rgba(240, 248, 255, 0.699);
+}
+
+#mainWrapper {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    box-shadow: 4px 3px 5px 3px #063246
+}
+
+#mainMap {
+    height: 55vh;
+}
+
+#display {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 0px;
+    height: 150px;
+    width: 97.5;
+    background-color: #faf2a8f5;
+    border-top: 5px solid rgba(240, 248, 255, 0.699);
+}
+
+#bottom-of-display {
+    font-size: 1.4rem;
+    color: #063246;
+    text-align: center;
+    border-radius: 5%;
+}
+
+#bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchBar {
+    width: 75vw;
+    height: 5vh;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 4px 3px 5px 3px #063246;
+    background-color: aliceblue;
+    border-radius: 10%;
+}
+
+#go {
+    align-self: center;
+    height: 5vh;
+    box-shadow: 4px 3px 5px 3px #063246;
+    background-color: #FE3A15;
+    border-radius: 10%;
+}
