@@ -19,23 +19,34 @@
 </head>
 
 <body>
-    <div id="header-wrap">
-        <a id="top" href="/index.html">
-            <topBar>
-            </topBar>
-        </a>
-    </div>
-    <div id="mainWrapper">
-        <map id="restMap"></map>
-        <div id="restDisplay">
-            <div id="info"></div>
-            <div id="comments"></div>
+    <div id="canvas">
+        <div id="header-wrap">
+            <a id="top" href="/index.html">
+                <topBar>
+                </topBar>
+            </a>
         </div>
-    </div>
-    <div id="bottom-wrapper">
-        <footer id="footer"><img class="icon" src="/icons/email.png" alt="email"><img class="icon"
-                src="/icons/facebook.png" alt="facebook"><img class="icon" src="/icons/instagram.png" alt="instagram">
-            <img class="icon" src="/icons/twitter.png" alt="twitter"></footer>
+        <div id="mainWrapper">
+            <map id="restMap"></map>
+            <div id="restDisplay">
+                <div id="info"></div>
+                <div id="comments"></div>
+                <div id="added-comments"></div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div id="comment-form">
+                    <textarea name="comment-box" id="comment-box" cols="59" rows="2" value="hey"></textarea><button id="submit-button">submit</button>
+                </div>
+            </div>
+        </div>
+        <div id="bottom-wrapper">
+            <footer id="footer"><img class="icon" src="/icons/email.png" alt="email"><img class="icon"
+                    src="/icons/facebook.png" alt="facebook"><img class="icon" src="/icons/instagram.png"
+                    alt="instagram">
+                <img class="icon" src="/icons/twitter.png" alt="twitter"></footer>
+        </div>
     </div>
     <script src="/restaurant.js"></script>
 </body>

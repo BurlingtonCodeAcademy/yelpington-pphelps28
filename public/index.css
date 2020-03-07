@@ -1,8 +1,13 @@
+* {
+    text-decoration: none;
+    color: #293d46;
+}
+
 body {
     font-family: 'Libre Baskerville', serif;
     font-family: 'Fira Sans', sans-serif;
-    font-family: 'Quicksand', sans-serif;
     font-family: 'Playfair Display', serif;
+    font-family: 'Quicksand', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -13,6 +18,8 @@ body {
     height: 100vh;
     animation: .5s ease-out 1 fade-in;
 }
+
+/* main page styling */
 
 #header-wrap {
     display: flex;
@@ -27,16 +34,16 @@ body {
 }
 
 #top {
-    text-decoration: none;
     text-align: center;
     color: #293d46;
+    text-shadow: 1px 2px #063246;
 }
 
 #mainWrapper {
     display: flex;
     flex-direction: column;
     width: auto;
-    box-shadow: 4px 3px 5px 3px #063246;
+    box-shadow: 4px 13px 15px 15px #063246;
 }
 
 #mainMap {
@@ -50,7 +57,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 0px;
+    margin: 0px;
     height: 150px;
     width: 97.5;
     background-color: #faf2a8f5;
@@ -58,15 +65,21 @@ body {
     overflow: scroll;
 }
 
+.list-item {
+    font-size: 1.1em;
+    padding: 3px;
+}
+
 #restaurant-name {
     font-size: 1.3em;
 }
 
 #bottom-of-display {
-    font-size: 1rem;
-    color: #063246;
+    font-size: 1.1rem;
+    color: #427186;
     text-align: center;
     border-radius: 5%;
+    box-shadow: none;
 }
 
 @keyframes fade-in {
@@ -93,8 +106,8 @@ body {
 }
 
 #searchBar {
-    width: 75vw;
     height: 5vh;
+    width: 30vw;
     text-align: center;
     margin: 5px;
     box-shadow: 4px 3px 5px 3px #063246;
@@ -122,36 +135,47 @@ body {
     background-blend-mode: overlay;
     mix-blend-mode: soft-light;
     opacity: .7;
+    transition: all .5s ease-in;
+    border-radius: 30%;
+    box-shadow: none;
 }
 
 .icon:hover {
     opacity: 1;
+    background-color: rgb(240, 255, 241);
+    border-radius: 45%;
+    transform: scale(1);
 }
 
 /* Restaurant page */
-
-#restWrapper {
-    display: flex;
-    flex-direction: column;
-    width: auto;
-    box-shadow: 4px 3px 5px 3px #063246
-}
 
 #restDisplay {
     text-align: center;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     margin-top: 0px;
     width: 97.5;
-    height: 40vh;
+    height: 50vh;
     font-size: 1.2em;
     background-color: #faf2a8f5;
     border-bottom: 10px solid rgba(240, 248, 255, 0.699);
     overflow: scroll;
 }
+#address{
+    padding-top: 5px;
+}
+#comment-form {
+    display: flex;
+    justify-content: center;
+}
+
+#comment-box {
+    resize: none;
+}
 
 .comments {
-    margin: 0px;
+    margin: 1px;
 }
 
 .info {
@@ -168,4 +192,17 @@ body {
     border-top: 5px solid rgba(240, 248, 255, 0.699);
     border-bottom: solid rgba(240, 248, 255, 0.699);
     height: 30vh;
+}
+
+/* simple media query, for desktop formatting */
+
+@media only screen and (min-width:550px) {
+    #canvas {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        width: 45vw;
+        justify-content: space-around;
+    }
 }

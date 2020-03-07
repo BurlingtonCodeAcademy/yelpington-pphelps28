@@ -29,8 +29,21 @@ $(document).ready(function () {
         $("#info").append(`<div class="info" >Phone: ${object.phone}</div>`)
         $("#info").append(`<div class="info" >Hours: ${object.hours === undefined ? 'Not Listed' : object.hours}</div>`)
         $("#comments").append(`<div class="comments"  id="comment-header">COMMENTS</div>`)
-        $("#comments").append(`<div class="comments" >${object.notes}</div>`)
-        $("#comments").append(``)
+        $("#comments").append(`<div class="comments" >-${object.notes}</div>`)
+        //retrieve local strage
+        if (localStorage.getItem(restaurant) !== null) {
+            //couldn't remove the null property from local storage while still adding a <br>, so I sliced it.  
+            $("#added-comments").append(`<div>${localStorage.getItem(restaurant).slice(8)}</div>`)
+        } else localStorage.clear()
+        //add submitted 'comment' to local storage
+        $("#submit-button").click(function () {
+            let comment = $("#comment-box")[0].value
+            $("#added-comments").append(`<div>-${comment}</div>`)
+            let temp = localStorage.getItem(restaurant) + '<br>' + '-' + comment
+            localStorage.setItem(restaurant, temp)
+            $("#comment-box")[0].value = ''
+            // localStorage.clear()
+        })
     }
 
 })
