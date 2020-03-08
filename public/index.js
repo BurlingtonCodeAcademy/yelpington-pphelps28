@@ -1,8 +1,8 @@
 /////after the document loads/////
 $(document).ready(function () {
-    fetch('./api/restaurants/rest-list.json').then(data => {
-        console.log(data)
-    })
+    //  fetch('./api/restaurants/rest-list.json').then(data => {
+    //      console.log(data)
+    //  })
     ///create map/////
     const mymap = L.map('mainMap').setView([44.47809657873547, -73.21348650653393], 15)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -13,7 +13,7 @@ $(document).ready(function () {
     $("#go").click(searched)
     function searched() {
         $("#display").empty()
-        fetch('https://json-server.burlingtoncodeacademy.now.sh/restaurants').then((data) => {
+        fetch('./api/restaurants/rest-list.json').then((data) => {
             return data.json()
         }).then(jsonObj => {
             return jsonObj.forEach(e => {
@@ -22,36 +22,41 @@ $(document).ready(function () {
                 makeList(e)
             })
         })
+        //renders display of restaurant names
         function makeList(obj) {
+            //attaches restaurant name, with added event listener to display more information on click
             let newDiv = `<a href="#" alt="${obj.name}"><div class="list-item" id=${obj.id}>${obj.name}</div></a>`
             $("#display").append(newDiv)
             $(`#${obj.id}`).click(function () {
                 $("#display").empty()
                 $("#display").append(`<div id="restaurant-name">${obj.name}</div>`)
-                $("#display").append(`<div>${obj.address}</div>`)
+                $("#display").append(`<div id="category">${obj.category}</div>`)
                 $("#display").append(`<a href="/restaurant/${obj.id}" id="bottom-of-display"><div>Learn More</div></a>`)
             })
         }
+        //places a marker based on each object and its coordinates
         function placeMarker(obj) {
-            let addressId = (obj.address.split('.')[0].toLowerCase().split(' ').join('-'))
-            fetch(`https://json-server.burlingtoncodeacademy.now.sh/address/${addressId}`)
+            fetch(`./api/restaurants/${obj.id}.json`)
                 .then((data) => {
                     return data.json()
                 })
                 .then(jsonObj => {
-                    let info = (jsonObj)
-                    let lat = info.lat
-                    let lon = info.lon
+                    //converts the json objects coordinates string to an array
+                    let info = (JSON.parse(jsonObj.coords))
+                    //assigns lat & long to variables for marker drop
+                    let lat = info[0]
+                    let lon = info[1]
                     let marker = L.marker([lat, lon]).addTo(mymap)
+                    marker.bindPopup(`${jsonObj.name}<br>${jsonObj.address}`)
+                    //called within placeMarker to tie object and marker together on click event
                     renderDisplay(marker, obj)
                 })
         }
-
         function renderDisplay(element, object) {
             element.on('click', function () {
                 $("#display").empty()
                 $("#display").append(`<div id="restaurant-name">${object.name}</div>`)
-                $("#display").append(`<div>${object.address}</div>`)
+                $("#display").append(`<div id="category">${object.category}</div>`)
                 $("#display").append(`<a href="/restaurant/${object.id}" id="bottom-of-display"><div>Learn More</div></a>`)
             })
         }

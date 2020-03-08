@@ -308,7 +308,7 @@
     {
         "id": "the-friendly-toast",
         "name": "The Friendly Toast",
-        "address": "86 St. Paul St., Burlington Vermont 05401",
+        "address": "86 Saint Paul St., Burlington Vermont 05401",
         "category": "Comfort Food, Small Plates, Brunch",
         "price": "$$",
         "coords": "[44.4754446,-73.2195054]",
@@ -321,8 +321,3 @@
         ]
     }
 ]
-
-
-
-
-
