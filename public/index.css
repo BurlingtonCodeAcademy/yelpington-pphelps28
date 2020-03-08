@@ -1,6 +1,5 @@
 * {
     text-decoration: none;
-    color: #293d46;
 }
 
 body {
@@ -53,6 +52,7 @@ body {
 }
 
 #display {
+    color: #293d46;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -63,6 +63,14 @@ body {
     background-color: #faf2a8f5;
     border-bottom: 5px solid rgba(240, 248, 255, 0.699);
     overflow: scroll;
+}
+
+#display>a:nth-child(even) {
+    color: #848e94;
+}
+
+#display>a:nth-child(odd) {
+    color: #293d46;
 }
 
 .list-item {
@@ -162,9 +170,19 @@ body {
     border-bottom: 10px solid rgba(240, 248, 255, 0.699);
     overflow: scroll;
 }
-#address{
+
+#restDisplay>div:nth-child(odd) {
+    color: #293d46;
+}
+
+#restDisplay>div:nth-child(even) {
+    color: #222324;
+}
+
+#address {
     padding-top: 5px;
 }
+
 #comment-form {
     display: flex;
     justify-content: center;

@@ -1,5 +1,8 @@
 /////after the document loads/////
 $(document).ready(function () {
+    fetch('./api/restaurants/rest-list.json').then(data => {
+        console.log(data)
+    })
     ///create map/////
     const mymap = L.map('mainMap').setView([44.47809657873547, -73.21348650653393], 15)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

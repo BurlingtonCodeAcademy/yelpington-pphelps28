@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     let restaurant = window.location.href.split('/').pop() //mr-mike's
-
+    
 
     fetch(`https://json-server.burlingtoncodeacademy.now.sh/restaurants/`).then((data) => {
         return data.json()
@@ -32,17 +32,19 @@ $(document).ready(function () {
         $("#comments").append(`<div class="comments" >-${object.notes}</div>`)
         //retrieve local strage
         if (localStorage.getItem(restaurant) !== null) {
-            //couldn't remove the null property from local storage while still adding a <br>, so I sliced it.  
+            //couldn't remove the null property from local storage while still adding a <br>, so I sliced it.  Starts at first comment entry
             $("#added-comments").append(`<div>${localStorage.getItem(restaurant).slice(8)}</div>`)
         } else localStorage.clear()
         //add submitted 'comment' to local storage
         $("#submit-button").click(function () {
             let comment = $("#comment-box")[0].value
-            $("#added-comments").append(`<div>-${comment}</div>`)
-            let temp = localStorage.getItem(restaurant) + '<br>' + '-' + comment
-            localStorage.setItem(restaurant, temp)
-            $("#comment-box")[0].value = ''
-            // localStorage.clear()
+            console.log(comment)
+            if (!comment == '') {
+                $("#added-comments").append(`<div>-${comment}</div>`)
+                let temp = localStorage.getItem(restaurant) + '<br>' + '-' + comment
+                localStorage.setItem(restaurant, temp)
+                $("#comment-box")[0].value = ''
+            }
         })
     }
 
