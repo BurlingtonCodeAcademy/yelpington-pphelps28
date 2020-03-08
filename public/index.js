@@ -1,8 +1,6 @@
-/////after the document loads/////
+/////after the  loads/////
 $(document).ready(function () {
-    //  fetch('./api/restaurants/rest-list.json').then(data => {
-    //      console.log(data)
-    //  })
+
     ///create map/////
     const mymap = L.map('mainMap').setView([44.47809657873547, -73.21348650653393], 15)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -31,6 +29,7 @@ $(document).ready(function () {
                 $("#display").empty()
                 $("#display").append(`<div id="restaurant-name">${obj.name}</div>`)
                 $("#display").append(`<div id="category">${obj.category}</div>`)
+                $("#display").append(`<div>${obj.price}</div>`)
                 $("#display").append(`<a href="/restaurant/${obj.id}" id="bottom-of-display"><div>Learn More</div></a>`)
             })
         }
@@ -44,7 +43,8 @@ $(document).ready(function () {
                     //converts the json objects coordinates string to an array
                     let info = (JSON.parse(jsonObj.coords))
                     //assigns lat & long to variables for marker drop
-                    let lat = info[0]
+                    console.log(info[0], info[1])
+                    let lat = info[0] + 0.0001225
                     let lon = info[1]
                     let marker = L.marker([lat, lon]).addTo(mymap)
                     marker.bindPopup(`${jsonObj.name}<br>${jsonObj.address}`)
@@ -52,13 +52,14 @@ $(document).ready(function () {
                     renderDisplay(marker, obj)
                 })
         }
+        //given the element (or in this case, leaflet marker,) the provided object's values are assigned to the display
         function renderDisplay(element, object) {
             element.on('click', function () {
                 $("#display").empty()
                 $("#display").append(`<div id="restaurant-name">${object.name}</div>`)
                 $("#display").append(`<div id="category">${object.category}</div>`)
                 $("#display").append(`<a href="/restaurant/${object.id}" id="bottom-of-display"><div>Learn More</div></a>`)
-            })
+            }, { passive: true })
         }
     }
 })

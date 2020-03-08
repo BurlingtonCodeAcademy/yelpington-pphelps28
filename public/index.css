@@ -43,7 +43,7 @@ body {
     display: flex;
     flex-direction: column;
     width: auto;
-    box-shadow: 4px 13px 15px 15px #063246;
+    box-shadow: 15px 10px 15px 5px #063246;
 }
 
 #mainMap {
@@ -61,14 +61,16 @@ body {
     margin: 0px;
     height: 150px;
     width: 97.5;
-    background-color: #faf2a8f5;
+    background-image: linear-gradient(#faf2a8f5, #f7e759e7, #faf2a8f5);
     border-bottom: 5px solid rgba(240, 248, 255, 0.699);
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 #category {
     font-size: 1.3em;
     color: #548aa3;
+    text-align: center;
 }
 
 #display>a:nth-child(even) {
@@ -94,8 +96,8 @@ body {
     text-align: center;
     border-radius: 5%;
     box-shadow: none;
-    background-color: #f7e759f5;
-    border-radius: 10%;
+    background-color: #f7e547;
+    border-radius: 30%;
 }
 
 @keyframes fade-in {
@@ -109,7 +111,7 @@ body {
 
 #bottom {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     margin-top: 0px;
     margin: 5px;
@@ -123,7 +125,7 @@ body {
 
 #searchBar {
     height: 5vh;
-    width: 30vw;
+    width: 45vw;
     text-align: center;
     margin: 5px;
     box-shadow: 4px 3px 5px 3px #063246;
@@ -175,8 +177,9 @@ body {
     height: 50vh;
     font-size: 1.2em;
     background-color: #faf2a8f5;
-    border-bottom: 10px solid rgba(240, 248, 255, 0.699);
+    border-bottom: 3px solid rgba(240, 248, 255, 0.699);
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 #restDisplay>div:nth-child(odd) {
@@ -201,7 +204,7 @@ body {
     resize: none;
     background-color: #eff0fe;
     text-align: center;
-    border-radius:5%;
+    border-radius: 5%;
 }
 
 .comments {
@@ -212,6 +215,10 @@ body {
 .info {
     font-size: .8em;
     padding: 2px;
+}
+
+#notes {
+    background-image: linear-gradient(#faf2a8f5, #f7e75985, #faf2a8f5)
 }
 
 #comment-header {
@@ -226,7 +233,6 @@ body {
 }
 
 #restMap {
-    border-top: 5px solid rgba(240, 248, 255, 0.699);
     border-bottom: solid rgba(240, 248, 255, 0.699);
     height: 30vh;
 }
@@ -234,6 +240,9 @@ body {
 /* simple media query, for desktop formatting */
 
 @media only screen and (min-width:550px) {
+    #bottom {
+        justify-content: space-evenly;
+    }
     #canvas {
         height: 100vh;
         display: flex;
