@@ -5,7 +5,7 @@ $(document).ready(function () {
     //added a clear button to clear local storage, for testing comment persistence
     $("#clear-button").click(() => localStorage.clear())
     //fetches data from unique restaurant API
-    fetch(`../api/restaurants/${restaurant}.json`).then(data => {
+    fetch(`../resources/api/restaurants/${restaurant}.json`).then(data => {
         return data.json()
     }).then(restObj => {
         let latLongArray = JSON.parse(restObj.coords)

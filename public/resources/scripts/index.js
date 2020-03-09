@@ -11,7 +11,7 @@ $(document).ready(function () {
     $("#go").click(searched)
     function searched() {
         $("#display").empty()
-        fetch('./api/restaurants/rest-list.json').then((data) => {
+        fetch('./resources/api/restaurants/rest-list.json').then((data) => {
             return data.json()
         }).then(restList => {
             return restList.forEach(e => {
@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
         //places a marker based on each object and its coordinates
         function placeMarker(obj) {
-            fetch(`./api/restaurants/${obj.id}.json`)
+            fetch(`./resources/api/restaurants/${obj.id}.json`)
                 .then((data) => {
                     return data.json()
                 })
