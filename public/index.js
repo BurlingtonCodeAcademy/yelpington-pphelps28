@@ -1,4 +1,4 @@
-/////after the  loads/////
+/////after the page loads/////
 $(document).ready(function () {
 
     ///create map/////
@@ -7,7 +7,7 @@ $(document).ready(function () {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>contributors'
     }).addTo(mymap)
-    /////"searching"
+    /////"searching" function propogates map markers with placeMarker() and the list with makeList()
     $("#go").click(searched)
     function searched() {
         $("#display").empty()
@@ -16,6 +16,7 @@ $(document).ready(function () {
         }).then(jsonObj => {
             return jsonObj.forEach(e => {
                 ////render a marker and list item for each restaurant///
+                mymap.setView([44.47809657873547, -73.21348650653393], 15)
                 placeMarker(e)
                 makeList(e)
             })
@@ -43,9 +44,9 @@ $(document).ready(function () {
                     //converts the json objects coordinates string to an array
                     let info = (JSON.parse(jsonObj.coords))
                     //assigns lat & long to variables for marker drop
-                    console.log(info[0], info[1])
-                    let lat = info[0] + 0.0001225
-                    let lon = info[1]
+                    let lat = info[0]
+                    //added a small extra bit to compensate for leaflet inaccuracy 
+                    let lon = info[1] + .0019
                     let marker = L.marker([lat, lon]).addTo(mymap)
                     marker.bindPopup(`${jsonObj.name}<br>${jsonObj.address}`)
                     //called within placeMarker to tie object and marker together on click event
