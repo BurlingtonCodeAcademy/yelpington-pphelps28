@@ -7,8 +7,8 @@ $(document).ready(function () {
     //fetches data from unique restaurant API
     fetch(`../api/restaurants/${restaurant}.json`).then(data => {
         return data.json()
-    }).then(jsonObj => {
-        let latLongArray = JSON.parse(jsonObj.coords)
+    }).then(restObj => {
+        let latLongArray = JSON.parse(restObj.coords)
         let lat = latLongArray[0]
         let lon = latLongArray[1] + .00185
         //drops a zoomed in marker on map (based on fetched restaurant object)
@@ -18,14 +18,15 @@ $(document).ready(function () {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>contributors'
         }).addTo(restMap)
         let marker = L.marker([lat, lon]).addTo(restMap)
-        marker.bindPopup(`${jsonObj.name}<br>${jsonObj.address}`)
+        marker.bindPopup(`${restObj.name}<br>${restObj.address}`)
         //renders display based on provided object.  does NOT tie to marker, because only one marker is provided.  Unnecessary.
-        renderDisplay(jsonObj)
+        renderDisplay(restObj)
     })
 })
 function renderDisplay(object) {
     //changes page title to restaurant's name and ads info to #info
     document.title = object.name
+    // uses jQuery to append divs with class-assigned 
     $("#top").html(object.name)
     $("#info").append(`<div class="info"  id="address">${object.address}</div>`)
     $("#info").append(`<div class="info" >${object.category}</div>`)

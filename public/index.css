@@ -19,6 +19,13 @@ body {
 
 /* main page styling */
 
+#canvas {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 #header-wrap {
     display: flex;
     justify-content: center;
@@ -98,8 +105,8 @@ body {
     text-align: center;
     border-radius: 5%;
     box-shadow: none;
-    background-color: #f7e547;
-    border-radius: 30%;
+    background-color: #f1edc8;
+    border-radius: 5%;
 }
 
 @keyframes fade-in {
@@ -124,7 +131,7 @@ body {
 }
 
 .hover-class:hover {
-    transform: scale(1.1)
+    transform: scale(1.2)
 }
 
 /* search bar and go button */
@@ -137,7 +144,11 @@ body {
     box-shadow: 4px 3px 5px 3px #063246;
     background-color: aliceblue;
     border-radius: 10%;
-    transition: all .3s ease-out;
+    transition: all .2s ease-out
+}
+
+#searchBar:hover {
+    background-color: rgba(154, 204, 247, 0.76);
 }
 
 #go {
@@ -161,7 +172,7 @@ body {
     background-blend-mode: overlay;
     mix-blend-mode: soft-light;
     opacity: .7;
-    transition: all .5s ease-in;
+    transition: all .3s ease-in;
     border-radius: 30%;
     box-shadow: none;
 }
@@ -230,7 +241,7 @@ body {
 #notes {
     background-color: #f8ed8a85;
     font-size: .75em;
-    padding:10px;
+    padding: 10px;
 }
 
 #comment-header {
@@ -242,6 +253,10 @@ body {
 
 #submit-button {
     background-color: #f7e759f5;
+    border-radius: 10%;
+}
+
+#clear-button {
     border-radius: 10%;
 }
 

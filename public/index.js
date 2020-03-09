@@ -13,8 +13,8 @@ $(document).ready(function () {
         $("#display").empty()
         fetch('./api/restaurants/rest-list.json').then((data) => {
             return data.json()
-        }).then(jsonObj => {
-            return jsonObj.forEach(e => {
+        }).then(restList => {
+            return restList.forEach(e => {
                 ////render a marker and list item for each restaurant///
                 mymap.setView([44.47809657873547, -73.21348650653393], 15)
                 placeMarker(e)
@@ -40,15 +40,15 @@ $(document).ready(function () {
                 .then((data) => {
                     return data.json()
                 })
-                .then(jsonObj => {
+                .then(restObj => {
                     //converts the json objects coordinates string to an array
-                    let info = (JSON.parse(jsonObj.coords))
+                    let info = (JSON.parse(restObj.coords))
                     //assigns lat & long to variables for marker drop
                     let lat = info[0]
                     //added a small extra bit to compensate for leaflet inaccuracy 
                     let lon = info[1] + .0019
                     let marker = L.marker([lat, lon]).addTo(mymap)
-                    marker.bindPopup(`${jsonObj.name}<br>${jsonObj.address}`)
+                    marker.bindPopup(`${restObj.name}<br>${restObj.address}`)
                     //called within placeMarker to tie object and marker together on click event
                     renderDisplay(marker, obj)
                 })
