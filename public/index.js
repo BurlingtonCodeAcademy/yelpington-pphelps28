@@ -2,7 +2,7 @@
 $(document).ready(function () {
 
     ///create map/////
-    const mymap = L.map('mainMap').setView([44.47809657873547, -73.21348650653393], 15)
+    const mymap = L.map('mainMap').setView([44.37809657873547, -73.21348650653393], 5)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>contributors'
