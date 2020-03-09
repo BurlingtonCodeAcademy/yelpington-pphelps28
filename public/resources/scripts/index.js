@@ -28,6 +28,8 @@ $(document).ready(function () {
             $("#display").append(newDiv)
             $(`#${obj.id}`).click(function () {
                 $("#display").empty()
+                let arr = JSON.parse(obj.coords)
+                mymap.setView([arr[0], arr[1] + .0019], 17)
                 $("#display").append(`<div id="restaurant-name">${obj.name}</div>`)
                 $("#display").append(`<div id="category">${obj.category}</div>`)
                 $("#display").append(`<div>${obj.price}</div>`)
@@ -49,6 +51,9 @@ $(document).ready(function () {
                     let lon = info[1] + .0019
                     let marker = L.marker([lat, lon]).addTo(mymap)
                     marker.bindPopup(`${restObj.name}<br>${restObj.address}`)
+                    marker.on('click', function () {
+                        mymap.setView([lat, lon], 17)
+                    })
                     //called within placeMarker to tie object and marker together on click event
                     renderDisplay(marker, obj)
                 })
