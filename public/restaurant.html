@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHELP!</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Fira+Sans|Libre+Baskerville|Playfair+Display|Quicksand&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+    <link rel="stylesheet" href="/resources/stylesheets/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!--JS generated restaurant pages, rendered with restaurant.js-->
+    <div id="canvas">
+        <div id="header-wrap">
+            <a id="top" href="/index.html">
+                <topBar>
+                </topBar>
+            </a>
+        </div>
+        <!--all ids with "rest" as a prefix are variations of index.html-->
+        <div id="mainWrapper">
+            <map id="restMap"></map>
+            <div id="restDisplay">
+                <div id="info"></div>
+                <div id="notes"></div>
+                <div id="comment-header">COMMENTS</div>
+                <div id="added-comments"></div>
+                <br>
+                <br>
+                <br>
+                <div id="comment-form">
+                    <textarea name="comment-box" id="comment-box" cols="59" rows="2" value="hey"></textarea><button
+                        id="submit-button">submit</button><button id="clear-button">clear</button>
+                </div>
+            </div>
+        </div>
+        <!--social media footer, unlinked (because no social media)-->
+        <div id="bottom-wrapper">
+            <footer id="footer"><img class="icon" src="/resources/icons/email.png" alt="email"><img class="icon"
+                    src="/resources/icons/facebook.png" alt="facebook"><img class="icon"
+                    src="/resources/icons/instagram.png" alt="instagram">
+                <img class="icon" src="/resources/icons/twitter.png" alt="twitter"></footer>
+        </div>
+    </div>
+    <script src="/resources/scripts/restaurant.js"></script>
+</body>
+
+</html>
